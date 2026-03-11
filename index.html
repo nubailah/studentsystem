@@ -7,45 +7,85 @@
 <style>
 
 body{
-font-family:Arial;
-background:linear-gradient(135deg,#6a5acd,#8a2be2);
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#5f6bdc,#8b5bbf);
 padding:40px;
+margin:0;
+}
+
+.header{
+color:white;
+margin-bottom:20px;
+}
+
+.header h1{
+margin:0;
+font-size:32px;
+}
+
+.header p{
+margin:5px 0 0 0;
+opacity:0.9;
 }
 
 .container{
 max-width:900px;
 margin:auto;
+}
+
+.card{
 background:white;
 padding:30px;
 border-radius:12px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-h2{
-color:#333;
+.form-row{
+display:flex;
+gap:20px;
+margin-bottom:15px;
+}
+
+.input-group{
+flex:1;
+}
+
+label{
+font-weight:bold;
+display:block;
+margin-bottom:5px;
 }
 
 input,select{
 width:100%;
 padding:10px;
-margin:8px 0;
 border-radius:6px;
 border:1px solid #ccc;
 }
 
 button{
+margin-top:10px;
 background:#4b5bdc;
 color:white;
 padding:12px 20px;
 border:none;
 border-radius:8px;
 cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#3949ab;
 }
 
 table{
 width:100%;
 margin-top:30px;
 border-collapse:collapse;
+}
+
+th{
+background:#f4f4f4;
 }
 
 table,th,td{
@@ -65,25 +105,53 @@ text-align:left;
 
 <div class="container">
 
-<h2>Student Registration System</h2>
+<div class="header">
+<h1>Student Registration System</h1>
+<p>Powered by Google Sheets & Modern Technology</p>
+</div>
 
-<input id="name" placeholder="Full Name">
+<div class="card">
 
-<input id="email" placeholder="Email">
+<h2>Register New Student</h2>
 
+<div class="form-row">
+
+<div class="input-group">
+<label>Full Name</label>
+<input id="name" placeholder="Enter student name">
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input id="email" placeholder="student@email.com">
+</div>
+
+</div>
+
+<div class="form-row">
+
+<div class="input-group">
+<label>Course</label>
 <select id="course">
 <option>Select Course</option>
 <option>Computer Science</option>
 <option>Information Technology</option>
 </select>
+</div>
 
-<input id="phone" placeholder="Phone Number">
+<div class="input-group">
+<label>Phone Number</label>
+<input id="phone" placeholder="01X-XXXXXXX">
+</div>
+
+</div>
 
 <button onclick="registerStudent()">Register Student</button>
 
 <p id="msg"></p>
 
 <table id="table">
+
 <tr>
 <th>Name</th>
 <th>Email</th>
@@ -91,7 +159,10 @@ text-align:left;
 <th>Phone</th>
 <th>Date</th>
 </tr>
+
 </table>
+
+</div>
 
 </div>
 
