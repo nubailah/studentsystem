@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#6a5acd,#8a2be2);
+padding:40px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h2{
+color:#333;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#4b5bdc;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+margin-top:30px;
+border-collapse:collapse;
+}
+
+table,th,td{
+border:1px solid #ddd;
+}
+
+th,td{
+padding:10px;
+text-align:left;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Registration System</h2>
+
+<input id="name" placeholder="Full Name">
+
+<input id="email" placeholder="Email">
+
+<select id="course">
+<option>Select Course</option>
+<option>Computer Science</option>
+<option>Information Technology</option>
+</select>
+
+<input id="phone" placeholder="Phone Number">
+
+<button onclick="registerStudent()">Register Student</button>
+
+<p id="msg"></p>
+
+<table id="table">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Course</th>
+<th>Phone</th>
+<th>Date</th>
+</tr>
+</table>
+
+</div>
+
+<script>
+
+var url="https://script.google.com/macros/s/AKfycbyDxyVG8YT-eAsy3Vi6nj0ACmIzXtjl65e-quJJYKNmPceaylXbTlMFTQTz4eiod-ZOiA/exec";
+
+function registerStudent(){
+
+var data={
+name:document.getElementById("name").value,
+email:document.getElementById("email").value,
+course:document.getElementById("course").value,
+phone:document.getElementById("phone").value
+};
+
+fetch(url,{
+method:"POST",
+body:JSON.stringify(data)
+})
+.then(res=>res.json())
+.then(res=>{
+document.getElementById("msg").innerHTML="Student Registered!";
+loadData();
+});
+
+}
+
+function loadData(){
+
+fetch(url)
+.then(res=>res.json())
+.then(data=>{
+
+var table=document.getElementById("table");
+
+for(var i=1;i<data.length;i++){
+
+var row=table.insertRow();
+
+for(var j=0;j<data[i].length;j++){
+
+var cell=row.insertCell();
+cell.innerHTML=data[i][j];
+
+}
+
+}
+
+});
+
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>
